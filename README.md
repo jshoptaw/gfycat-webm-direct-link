@@ -18,6 +18,12 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 1.0.1
+-------------
+_Released 2015-11-13_
+
+*	Updated WebM URL (Gfycat changed subdomain from "zippy" to "giant")
+
 Version 1.0.0
 -------------
 _Released 2015-10-21_

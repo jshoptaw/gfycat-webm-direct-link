@@ -3,7 +3,7 @@
 // @namespace       OTACON120
 // @author          OTACON120
 // @license         http://opensource.org/licenses/MIT
-// @version         1.0.0
+// @version         1.0.1
 // @description     Adds a direct link to Gfycat WebM files on Gfycat pages
 // @updateURL       http://otacon120.com/user-script-files/meta/miscellaneous/gfycat-webm-direct-link/
 // @downloadURL     http://otacon120.com/user-script-files/script/miscellaneous/gfycat-webm-direct-link/Gfycat_Webm_Direct_Link.user.js
@@ -15,7 +15,7 @@
 
 var pageUrl         = window.location,
 	gfyShareEl      = {
-		url:             pageUrl.protocol + '//zippy.gfycat.com' + pageUrl.pathname + '.webm',
+		url:             pageUrl.protocol + '//giant.gfycat.com' + pageUrl.pathname + '.webm',
 		linkBlock:       document.createElement( 'div' ),
 		linkHeader:      document.createElement( 'span' ),
 		linkText:        document.createElement( 'span' ),
