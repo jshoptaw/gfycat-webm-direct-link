@@ -1,6 +1,6 @@
 Gfycat WebM Direct Link
 ======================================
-Adds the Gfycat WebM file's URL/direct link under the GIF link in the standard Gfycat share links provided on the Gfycat HTML5 video page.
+Adds "URL" button to Gfycat pages to provide various file URLs (GIF/WebM/MP4).
 
 Use with one of the following browser extensions:
 
@@ -17,6 +17,12 @@ Use with one of the following browser extensions:
 
 Release Notes
 =============
+
+Version 2.0.0
+-------------
+_Released 2015-12-22_
+
+*	Completely reworked to work with Gfycat's new layout
 
 Version 1.0.1
 -------------
