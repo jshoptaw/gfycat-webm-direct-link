@@ -3,7 +3,7 @@
 // @namespace       OTACON120
 // @author          OTACON120
 // @license         http://opensource.org/licenses/MIT
-// @version         2.0.0
+// @version         2.0.1
 // @description     Adds direct URLs to Gfycat GIF/WebM/MP4 files on Gfycat pages
 // @updateURL       http://otacon120.com/user-script-files/meta/miscellaneous/gfycat-webm-direct-link/
 // @downloadURL     http://otacon120.com/user-script-files/script/miscellaneous/gfycat-webm-direct-link/Gfycat_Webm_Direct_Link.user.js
@@ -76,7 +76,7 @@ GM_addStyle( '\
 	background: rgba(' + bodyBgColor + ', 0.65);\
 	border-radius: 3px;\
 	padding: 7px;\
-	color: ' + getComputedStyle( document.getElementById( 'views' ) ).getPropertyValue( 'color' ) + ';\
+	color: ' + getComputedStyle( document.getElementsByClassName( 'views' )[0] ).getPropertyValue( 'color' ) + ';\
 	font-size: 11px;\
 }\
 \

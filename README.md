@@ -18,6 +18,12 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 2.0.1
+-------------
+_Released 2016-02-01)
+
+*	Bugfix to account for small changes in Gfycat's HTML (removing the "views" ID from the view counter that the script grabs font color from)
+
 Version 2.0.0
 -------------
 _Released 2015-12-22_
