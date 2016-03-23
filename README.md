@@ -18,6 +18,11 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 2.0.2
+-------------
+_Released 2016-03-23_
+*	Switch to different (hopefully more reliable) CSS-based method for detecting visible "HD" button or proper "URL" button placement
+
 Version 2.0.1
 -------------
 _Released 2016-02-01)

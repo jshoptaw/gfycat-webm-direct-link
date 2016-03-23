@@ -3,7 +3,7 @@
 // @namespace       OTACON120
 // @author          OTACON120
 // @license         http://opensource.org/licenses/MIT
-// @version         2.0.1
+// @version         2.0.2
 // @description     Adds direct URLs to Gfycat GIF/WebM/MP4 files on Gfycat pages
 // @updateURL       http://otacon120.com/user-script-files/meta/miscellaneous/gfycat-webm-direct-link/
 // @downloadURL     http://otacon120.com/user-script-files/script/miscellaneous/gfycat-webm-direct-link/Gfycat_Webm_Direct_Link.user.js
@@ -23,8 +23,7 @@ var mobileUrl, bodyBgColor,
 	webmUrl        = document.getElementById( 'webmSource' ).src,
 	mp4Url         = document.getElementById( 'mp4Source' ).src,
 	urlsContainer  = document.createElement( 'div' ),
-	urlBtn         = document.createElement( 'button' ),
-	urlBtnPosition = parseInt( getComputedStyle( gifLink ).getPropertyValue( 'right' ) ) + 32;
+	urlBtn         = document.createElement( 'button' )
 
 bodyBgColor = getComputedStyle( document.body ).getPropertyValue( 'background-color' ).split( '(' )[1].split( ')' )[0];
 
@@ -46,13 +45,25 @@ GM_addStyle( '\
 	margin: 0;\
 	padding: 0 ' + getComputedStyle( gifLink ).getPropertyValue( 'padding-left' ) + ';\
 	position: absolute;\
-	right: ' + urlBtnPosition + 'px;\
+	right: 48px;\
 	pointer-events: all;\
 	font-family: inherit;\
 	height: 20px;\
 	-webkit-box-sizing: initial;\
 	-moz-box-sizing: initial;\
 	box-sizing: initial;\
+}\
+\
+.hd[style*="display"] ~ .url-btn {\
+	right: 80px;\
+}\
+\
+.mobile-mp4-url {\
+	display: none;\
+}\
+\
+.hd[style*="display"] ~ .urls-container .mobile-mp4-url {\
+	display: block;\
 }\
 \
 .url-btn.active {\
@@ -101,13 +112,9 @@ GM_addStyle( '\
 		height: 17px;\
 	}' );
 
-// Get mobile URL, if available
-if ( hdBtn.style.display ) {
-	mobileUrl = mp4Url.replace( /\/\/giant/, '//thumbs' )
-		.replace( /\.mp4$/, '-mobile.mp4' );
-} else { // Adjust URL button positioning if no HD button is displayed
-	urlBtn.style.right = ( urlBtnPosition - 32 ) + 'px';
-}
+// Get mobile URL
+mobileUrl = mp4Url.replace( /\/\/giant/, '//thumbs' ).replace( /\.mp4$/, '-mobile.mp4' );
+
 
 // URL button
 urlBtn.id = 'url-btn';
