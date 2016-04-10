@@ -18,6 +18,11 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 3.0.0
+-------------
+_Released 2016-04-10_
+*	Completely reworked (again) for new bottom-controlled Gfycat layout
+
 Version 2.0.2
 -------------
 _Released 2016-03-23_
