@@ -18,6 +18,11 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 3.0.1
+-------------
+_Released 2016-07-20)
+*	Fixed bug where button wouldn't show up due to Gfycat switching from Font Awesome to SVG icons
+
 Version 3.0.0
 -------------
 _Released 2016-04-10_
@@ -39,17 +44,5 @@ Version 2.0.0
 _Released 2015-12-22_
 
 *	Completely reworked to work with Gfycat's new layout
-
-Version 1.0.1
--------------
-_Released 2015-11-13_
-
-*	Updated WebM URL (Gfycat changed subdomain from "zippy" to "giant")
-
-Version 1.0.0
--------------
-_Released 2015-10-21_
-
-*	Initial release
 
 #### Full changelog available at http://otacon120.com ####
