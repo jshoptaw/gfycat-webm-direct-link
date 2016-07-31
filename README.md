@@ -18,9 +18,14 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 3.0.2
+-------------
+_Released 2016-07-30_
+*	Updated to work with recent Gfycat changes.
+
 Version 3.0.1
 -------------
-_Released 2016-07-20)
+_Released 2016-07-20_
 *	Fixed bug where button wouldn't show up due to Gfycat switching from Font Awesome to SVG icons
 
 Version 3.0.0
