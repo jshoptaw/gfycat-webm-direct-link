@@ -18,6 +18,11 @@ Use with one of the following browser extensions:
 Release Notes
 =============
 
+Version 3.0.3
+-------------
+_Released 3.0.3_
+*	Updated yet again to work with recent Gfycat changes (again!). Literally just a single character in an HTML class (`control-container` changed to `controls-container`) was changed. Gfycat, what did I do to anger you?! D:
+
 Version 3.0.2
 -------------
 _Released 2016-07-30_
@@ -43,11 +48,5 @@ Version 2.0.1
 _Released 2016-02-01)
 
 *	Bugfix to account for small changes in Gfycat's HTML (removing the "views" ID from the view counter that the script grabs font color from)
-
-Version 2.0.0
--------------
-_Released 2015-12-22_
-
-*	Completely reworked to work with Gfycat's new layout
 
 #### Full changelog available at http://otacon120.com ####

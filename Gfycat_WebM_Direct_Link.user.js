@@ -3,7 +3,7 @@
 // @namespace       OTACON120
 // @author          OTACON120
 // @license         http://opensource.org/licenses/MIT
-// @version         3.0.2
+// @version         3.0.3
 // @description     Adds direct URLs to Gfycat GIF/WebM/MP4 files on Gfycat pages
 // @updateURL       http://otacon120.com/user-script-files/meta/miscellaneous/gfycat-webm-direct-link/
 // @downloadURL     http://otacon120.com/user-script-files/script/miscellaneous/gfycat-webm-direct-link/Gfycat_Webm_Direct_Link.user.js
@@ -77,7 +77,7 @@ function hideOverlay( btn, overlay ) {
 }
 
 function insertUrlButton() {
-	if ( controlContainer = document.getElementById( 'control-container' ) ) {
+	if ( controlContainer = document.getElementById( 'controls-container' ) ) {
 		clearInterval( urlBtnInit );
 
 		var	controlsRight = controlContainer.getElementsByClassName( 'right' )[0],
@@ -142,5 +142,3 @@ function insertUrlButton() {
 		new Clipboard( '.urls-links .copy-url-button' );
 	}
 }
-
-
