@@ -3,7 +3,7 @@
 // @namespace       OTACON120
 // @author          OTACON120
 // @license         http://opensource.org/licenses/MIT
-// @version         3.0.3
+// @version         3.1.0
 // @description     Adds direct URLs to Gfycat GIF/WebM/MP4 files on Gfycat pages
 // @updateURL       http://otacon120.com/user-script-files/meta/miscellaneous/gfycat-webm-direct-link/
 // @downloadURL     http://otacon120.com/user-script-files/script/miscellaneous/gfycat-webm-direct-link/Gfycat_Webm_Direct_Link.user.js
@@ -14,7 +14,6 @@
 // ==/UserScript==
 var controlContainer,
 	mainContainer         = document.getElementById( 'main-container' ),
-	outsideHoverContainer = document.getElementById( 'outside-hover-container' ),
 	scriptCustomStyle     = document.createElement( 'style' ),
 	urlsContainer         = document.createElement( 'div' ),
 	urlLinks              = document.createElement( 'div' ),
@@ -22,8 +21,8 @@ var controlContainer,
 	urlBtnInit            = setInterval( insertUrlButton, 500 );
 
 // Insert custom CSS styles
-scriptCustomStyle.id            = 'o120-custom-script-style';
-scriptCustomStyle.textContent   = `
+scriptCustomStyle.id          = 'o120-custom-script-style';
+scriptCustomStyle.textContent = `
 .ic-link {
 	width: 15px;
 	height: 15px;
@@ -34,59 +33,47 @@ document.head.appendChild( scriptCustomStyle );
 
 // Create and append URL/description into URLs container
 function addUrlListing( type, url ) {
-	var urlBox          = document.createElement( 'div' ),
-		urlBoxTitle     = document.createElement( 'div' ),
-		urlInputWrapper = document.createElement( 'span' ),
-		urlInput        = document.createElement( 'input' ),
-		copyUrlBtn      = document.getElementsByClassName( 'copy-url-button' )[0].cloneNode( true );
+	var urlBox      = document.createElement( 'div' ),
+		urlBoxTitle = document.createElement( 'div' ),
+		urlInput    = document.createElement( 'input' ),
+		copyUrlBtn  = document.getElementsByClassName( 'copy-input-button' )[0].cloneNode( true );
 
 	// URL Box
-	urlBox.className = 'url-box url-box--embed url-box--link';
+	urlBox.className = 'copy-input-container';
 
 	// URL Box Title
-	urlBoxTitle.className   = 'url-box-title';
+	urlBoxTitle.className   = 'input-title';
 	urlBoxTitle.textContent = type;
 
-	// URL Input Wrapper
-	urlInputWrapper.className = 'url-input-wrapper';
-
 	// URL Input
-	urlInput.id        = 'urlEmbed' + type.replace( /[^a-zA-Z0-9]/g, '' );
-	urlInput.className = 'url-input';
+	urlInput.className = 'copy-input';
 	urlInput.type      = 'text';
 	urlInput.value     = url;
 	urlInput.setAttribute( 'readonly', 'readonly' );
 
 	// Copy URL Button
-	copyUrlBtn.dataset.clipboardTarget = '#' + urlInput.id;
-
-	urlInputWrapper.appendChild( urlInput );
-	urlInputWrapper.appendChild( copyUrlBtn );
+	copyUrlBtn.dataset.clipboardText = url;
+	copyUrlBtn.id                    = 'copy-' + type.replace( /[^a-zA-Z0-9]/g, '' ).toLowerCase();
 
 	urlBox.appendChild( urlBoxTitle );
-	urlBox.appendChild( urlInputWrapper );
+	urlBox.appendChild( urlInput );
+	urlBox.appendChild( copyUrlBtn );
 
 	urlLinks.appendChild( urlBox );
-}
-
-function hideOverlay( btn, overlay ) {
-	if ( btn.classList.contains( 'active' ) || ! overlay.classList.contains( 'is-hidden' ) ) {
-		btn.classList.remove( 'active' );
-		overlay.classList.add( 'is-hidden' );
-	}
 }
 
 function insertUrlButton() {
 	if ( controlContainer = document.getElementById( 'controls-container' ) ) {
 		clearInterval( urlBtnInit );
 
-		var	controlsRight = controlContainer.getElementsByClassName( 'right' )[0],
-			gifLink       = document.getElementById( 'large-gif' ),
-			gifUrl        = gifLink.href,
-			webmUrl       = document.getElementById( 'webmSource' ).src,
-			mp4Url        = document.getElementById( 'mp4Source' ).src,
-			socialBtn     = document.getElementById( 'share-button' ),
-			embedBtn      = document.getElementById( 'embed-button' );
+		var	controlsRight    = controlContainer.getElementsByClassName( 'right' )[0],
+			closeUrlsOverlay = document.getElementsByClassName( 'close-overlay' )[0].cloneNode( true ),
+			gifLink          = document.getElementById( 'large-gif' ),
+			gifUrl           = gifLink.href,
+			webmUrl          = document.getElementById( 'webmSource' ).src,
+			mp4Url           = document.getElementById( 'mp4Source' ).src,
+			socialBtn        = document.getElementById( 'share-button-open' ),
+			embedBtn         = document.getElementById( 'embed-button' );
 
 
 		// Get mobile URL
@@ -97,39 +84,24 @@ function insertUrlButton() {
 		urlBtn.className = 'ic ic-link';
 		urlBtn.title     = 'URLs';
 		urlBtn.onclick = function() {
-			var socialContainer = document.getElementById( 'social-container' ),
-				embedContainer  = document.getElementById( 'embed-container' );
-
-			hideOverlay( socialBtn, socialContainer );
-			hideOverlay( embedBtn, embedContainer );
-
-			this.classList.toggle( 'active' );
-			urlsContainer.classList.toggle( 'is-hidden' );
+			urlsContainer.removeAttribute( 'hidden' );
+			urlsContainer.style.display = '';
 		};
-
-		socialBtn.addEventListener(
-			'click',
-			function() {
-				hideOverlay( urlBtn, urlsContainer );
-			}
-		);
-
-		embedBtn.addEventListener(
-			'click',
-			function() {
-				hideOverlay( urlBtn, urlsContainer );
-			}
-		);
 
 		controlsRight.insertBefore( urlBtn, embedBtn.nextSibling );
 
 		// URLs Container
 		urlsContainer.id        = 'urls-container';
-		urlsContainer.className = 'embed-container urls-container is-hidden';
+		urlsContainer.className = 'embed-container urls-container';
+		urlsContainer.setAttribute( 'hidden', '' );
+
+		// Close URLs Overlay
+		closeUrlsOverlay.setAttribute( 'on', 'tap:urls-container.hide' );
 
 		// URLs container inner
 		urlLinks.className = 'embed-links urls-links';
 
+		urlsContainer.appendChild( closeUrlsOverlay );
 		urlsContainer.appendChild( urlLinks );
 		mainContainer.appendChild( urlsContainer );
 
@@ -139,6 +111,6 @@ function insertUrlButton() {
 		addUrlListing( 'MP4', mp4Url );
 		addUrlListing( 'Mobile (MP4)', mobileUrl );
 
-		new Clipboard( '.urls-links .copy-url-button' );
+		new Clipboard( '.urls-links .copy-input-button' );
 	}
 }

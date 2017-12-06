@@ -15,12 +15,25 @@ Use with one of the following browser extensions:
 *	[Tampermonkey](https://addons.opera.com/extensions/details/tampermonkey-beta/)
 *	[Violentmonkey](https://addons.opera.com/extensions/details/violent-monkey/)
 
+### Android ###
+
+#### Mozilla Firefox ###
+*	[usi (User|Unified Script Injector)](https://addons.mozilla.org/en-US/firefox/addon/userunified-script-injector/)
+
+#### Dolphin ####
+*	[Tampermonkey Dolphin](https://play.google.com/store/apps/details?id=net.tampermonkey.dolphin)
+
 Release Notes
 =============
 
+Version 3.1.0
+-------------
+_Released 2017-12-05_
+*	Updated to work with new Gfycat code/layout changes.
+
 Version 3.0.3
 -------------
-_Released 3.0.3_
+_Released 2016-08-13_
 *	Updated yet again to work with recent Gfycat changes (again!). Literally just a single character in an HTML class (`control-container` changed to `controls-container`) was changed. Gfycat, what did I do to anger you?! D:
 
 Version 3.0.2
